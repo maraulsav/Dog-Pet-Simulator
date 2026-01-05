@@ -1,0 +1,143 @@
+import java.util.Scanner;
+public class DogApplications{
+    public static void main(String[] args){
+        int select;
+        // allow to get user input
+        Scanner input = new Scanner(System.in); // creates a scanner 0
+        System.out.println("Who is the best boy ever? (Enter your buddies name");
+        String dogName = input.nextLine();
+
+        // create a new dog with needs object
+        DogNeeds dog = new DogNeeds(dogName);
+
+        do {
+            System.out.println("What do you want to do today?");
+            System.out.println(">>[0] Take "+ dogName + " for a walk.");
+            System.out.println(">> [1] Feed "+ dogName + "their favourite treats.");
+            System.out.println(">> [2] Refill" + dogName + "water bowl");
+            System.out.println(">> [3] Groom " + dogName + "'s coat");
+            System.out.println(">> [4] Take" + dogName + " out to potty");
+            System.out.println(">> [5] play with "+dogName);
+            System.out.println(">> [6] Let" +dogName + " get some sleep");
+            System.out.println(">> [7] Quit");
+
+            // This will select the int [0-7] that user chose
+            select = input.nextInt();
+
+            // exit the console, quitting the game
+            if (select = 7){
+                continue;
+            }
+            // take dog for walk
+            else if (select == 0){
+                if (dog.getAttention()<5){
+                    System.out.println("Mhmmm, it does not seem like "+ dogName + " wants to go for a walk right now. Try again later.")
+                }
+                System.out.println(">> " + dogName + "really enjoy that walk!")
+                // alter needs
+                dog.changeAttention(+2);
+                dog.changeEnergy(-1);
+                dog.changeHygiene(-1);
+                showDogCurrentNeeds(dog);
+            }
+            // Give a treat
+            else if(select == 1){
+                if (dog.getHunger()>5){
+                    System.out.println("mhmm, it looks like "+ dogName + " is to full to eat right now, try again later")
+                    continue;
+                }
+                System.out.println(">> " + dogName + " really enjoy that treat!")
+                //alter needs
+                dog.changeHunger(+1);
+                dog.changeThirst(-1);
+                dog.changeEnergy(+1);
+                dog.changeAttention(+1);
+                showDogCurrentNeeds(dog);
+            }
+
+            // Refill the dog's water bowl
+            else if (select == 2){
+                if (dog.getThirst() > 5){
+                    System.out.println("Mhmm, it looks like that " + dogName + "is not really thirsty. ");
+                    continue;
+                }
+                System.out.println(">> " + dogName + " really enjoy clean water!")
+                // alter needs
+                dog.changeThirst(+1);
+                dog.changeBladder(-1);
+                showDogCurrentNeeds(dog);
+            }
+
+            // Groom dog 
+            else if (select == 3){
+                if (dog.getHygiene() > 5) {
+                    System.out.println(">> Mmh, it seems like " + dogName + " is not that dirty right now.");
+                    continue;
+                }
+                System.out.println(">> " + dogName + " smells much better now!");
+                // alter needs
+                dog.changeHygiene(+1);
+                dog.changeEnergy(-1);
+                showDogCurrentNeeds(dog);
+            }
+
+            // Take dog out to potty
+            else if (select == 4){
+                if (dog.getBladder() > 5){
+                    System.out.println(">> Mhm, it seems like " + dogName + "do not need to go to potty right now")
+                    continue;
+                }
+                System.out.println("Phew, that was close " + dogName + " really had to go!");
+                // alter needs
+                dog.changeBladder(+1);
+                dog.changeHygiene(-1);
+                showDogCurrentNeeds(dog);
+            }
+            //Play with Dog
+            else if (select == 5){
+                System.out.println("*Pet pet" + "\n>> " + dogName + " really loves spending time with you!")
+                // alter needs
+                dog.changeAttention(+1);
+                dog.changeEnergy(-1);
+                showDogCurrentNeeds(dog);
+            }
+
+            else if (select == 6){
+                if (dog.getEnergy() > 5) {
+                    System.out.println(">> Mmh, it seems like " + dogName + " is not really tired.");
+                    continue;
+                }
+                System.out.println(">> Zzzzzzz ");
+                // alter needs
+                dog.changeEnergy(+1);
+                dog.changeHunger(-1);
+                dog.changeThirst(-1);
+                dog.changeBladder(-1);
+                showDogCurrentNeeds(dog);
+            }
+
+            else{
+                System.out.println(">> You need to choose something to do with " + dogName + " first!")
+            }
+            //enables dogs' needs change upon each selection
+            dog.tick ();
+        } while (select != 7); //because 7 means quit
+
+    }
+    private static void showDogCurrentNeeds(DogNeeds dog){
+        // Display current needs
+        System.out.println(">> Hunger " + dog.getHunger());
+        System.out.println(">> Thirst " + dog.getThirst());
+        System.out.println(">> Attention " + dog.getAttention());
+        System.out.println(">> Bladder "+ dog.getBladder());
+        System.out.println(">> Hygiene "+ dog.getHygiene());
+        System.out.println(">> Energy "+ dog.getEnergy());
+    }
+}
+
+public static void needsMenu(String dogName){
+    System.out.println(">>>hi hi hi dear "+"\n>>> Welcome to parenthood! You are now the new owner of" +dogName+"!"+
+        "૮₍ ˶ᵔ ᵕ ᵔ˶ ₎ა" + "\n >>> Remember, being a pet owner is a lot of work" +
+        "\n>>> " + dogName + "needs clean water, food, sleep, grooming, playtime, and lot's LOT'S of attention." + 
+        "\n>>> well good luck, dear!");
+}

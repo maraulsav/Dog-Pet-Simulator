@@ -1,0 +1,97 @@
+import java.util.Random;
+Random rand = new Random();
+
+public class DogNeeds {
+    private String dogName;
+    private int hunger;
+    private int thirst;
+    private int attention;
+    private int energy;
+    private int hygiene;
+    private int bladder;
+}
+
+public DogNeeds(String d){
+    dogName = d;
+    hunger = 1;
+    thirst = 1;
+    attention = 1;
+    bladder = 1;
+    energy = 1;
+    hygiene = 1;
+}
+
+//methods to increase ro decrease the dog's need
+public void changeHunger(int h){
+    hunger += h
+}
+public void changeThirst(int t){
+    thirst += t
+}
+public void changeAttention(int a){
+    attention += a
+}
+public void changeBladder(int b){
+    bladder += b
+}
+public void changeHygiene(int g){
+    hygiene += g
+}
+public void changeEnergy(int e){
+    energy += e
+}
+
+// mandatory getter methods
+public String getDogName(){
+    return dogName;
+}
+public int getAttention(){
+    return attention;
+}
+public int getBladder(){
+    return bladder;
+}
+public int getThirst(){
+    return thirst;
+}
+public int getHunger(){
+    return hunger;
+}
+public int getHygiene(){
+    return hygiene;
+}
+public int getEnergy(){
+    return energy;
+}
+
+// mandatory setter methods
+public void setAttention(int attention){
+    this.attention = attention;
+}
+public void setBladder(int bladder){
+    this.bladder = bladder;
+}
+public void setThirst(int thirst){
+    this.thirst = thirst;
+}
+public void setHunger(int hunger){
+    this.hunger = hunger;
+}
+public void setHygiene(int hygiene){
+    this.hygiene = hygiene;
+}
+public void setEnergy(int energy){
+    this.energy = energy;
+}
+public void setDogName(String dogName){
+    this.dogName = dogName;
+}
+
+public void tick(){
+    hunger += rand.nextInt(2);
+    thirst += rand.nextInt(2);
+    bladder += rand.nextInt(2);
+    energy += rand.nextInt(2);
+    attention += rand.nextInt(2);
+    hygiene += rand.nextInt(1);
+}
