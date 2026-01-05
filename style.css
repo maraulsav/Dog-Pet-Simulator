@@ -1,0 +1,308 @@
+/* GLOBAL RESET */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; }
+  
+.screen {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    }
+      
+.screen.active {
+        display: block;
+      }
+
+
+
+* {
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    background-color: #fef6e4;
+    font-family: Arial, sans-serif;
+}
+
+
+.screen.active {
+    display: flex;
+}
+
+/* Center content ONLY for these screens */
+#nameScreen,
+#loading-screen,
+#home-screen {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+
+
+.actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+h1 {
+    margin-bottom: 10px;
+}
+
+.dog-img {
+    width: 200px;
+    margin: 15px 0;
+}
+
+input {
+    padding: 10px;
+    font-size: 16px;
+    width: 220px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+button{
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background: #FFB703;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+button:hover:not(:disabled){
+    transform: scale(1.05);
+}
+
+/* Loading Screen */
+.paw{
+    font-size: 60px;
+    animation: walk 2s linear infinite;
+}
+
+@keyframes walk {
+    0% { transform: translateX(-120px); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateX(120px); opacity: 0; }
+}
+
+.progress-container{
+    width: 300px;
+    height: 18px;
+    background: #ddd;
+    border-radius: 20px;
+    margin-top: 15px;
+    overflow: hidden;
+}
+
+.progress-bar{
+    height: 100%;
+    width: 0%;
+    background: #8ECAE6;
+    transition: width 0.3s;
+}
+
+.loading-text{
+    max-width: 300px;
+    margin-bottom: 10px;
+}
+
+
+/* Living Room */
+.living-room {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+
+    background: url("images/livingRoom.png") center / cover no-repeat;
+}
+.living-room .dog {
+    position: absolute;
+    bottom: 10vh;
+    left: 50%;
+    transform: translateX(-50%);
+
+    height: 45vh;
+    width: auto;
+
+    cursor: pointer;
+}
+
+/* Sleeping*/
+.sleep-screen {
+    width: 100vw;
+    height: 100vh;
+    background: #1b263b;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+    font-size: 22px;
+}
+
+.sleep-dog {
+    height: 50vh;
+    width: auto;
+}
+
+
+/* Dog */
+.dog {
+    position: absolute;
+    bottom: 8vh;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    width: min(35vw, 420px);   /* responsive */
+    max-width: 80%;
+    
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.dog:active {
+    transform: translateX(-50%) scale(0.95);
+}
+
+/* Doors */
+.door {
+    position: absolute;
+    bottom: 100px;
+    font-size: 40px;
+    cursor: pointer;
+}
+
+.door.left {
+    left: 40px;
+}
+
+.door.right {
+    right: 40px;
+}
+
+/* Sleep area */
+.sleep-area {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 35px;
+    cursor: pointer;
+}
+
+/* Status bar */
+.status-bar {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255,255,255,0.85);
+    padding: 10px 14px;
+    border-radius: 14px;
+    display: flex;
+    gap: 12px;
+    font-size: 14px;
+}
+
+
+
+  
+.room {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    }
+      
+  
+  .hidden {
+    display: none;
+  }
+
+  .bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+    z-index: 0;
+  }
+
+  /* DINING ROOM */
+  .dining-room {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+  
+    background: url("images/DiningRoom.png") center / cover no-repeat;
+  }
+  
+  #bowl {
+    position: absolute;
+    bottom: 18vh;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    width: 650px;
+    height: auto;
+  
+    cursor: pointer;
+  }
+  
+.dog {
+  position: absolute;
+  z-index: 5;
+}
+
+.back-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 10px 16px;
+    font-size: 16px;
+    z-index: 10;
+  }
+
+/* Notification popup */
+.notification {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    
+    background: rgba(0, 0, 0, 0.75);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 14px;
+    font-size: 15px;
+    
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s ease;
+    z-index: 100;
+}
+
+.notification.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}

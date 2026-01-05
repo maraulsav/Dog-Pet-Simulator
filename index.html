@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Dog Simulator 🐶</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <!-- 1. Name Selection -->
+        <div id="nameScreen" class="screen active">
+            <h1>🐾 Name Your Dog 🐾</h1>
+            <img src="images/DogIntro.png" class="dog-img" id="dogImage">
+            <p>Who is the best buddy ever?</p>
+            <input type="text" id="dogNameInput" placeholder="Enter dog name...">
+            <button id="startBtn">Start Adventure</button>
+        </div>
+
+        <!-- Loading Screen-->
+        <div class="screen" id="loading-screen">
+            <div class = "paw"> 🐾 </div>
+            <p class="loading-text" id="loadingText"></p>
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+        </div>
+
+
+        <!-- 2. Living Room --> 
+        <div id="livingRoom" class="screen living-room">
+
+            <!-- Dog -->
+            <img
+                id="dogSprite"
+                src="images/Dog.png"
+                class="dog"
+                ondblclick="petDog()"
+                alt="Dog"
+            />
+        
+        
+            <!-- Sleep Area -->
+            <div class="sleep-area" onclick="sleep()">🛏️</div>
+        
+            <!-- Dining Room -->
+            <div class="door right" onclick="goDining()">🍽️</div>
+        
+        </div>
+
+        <!-- Sleep Screen -->
+        <div id="sleepScreen" class="screen sleep-screen">
+            <img src="images/dogSleep.png" class="sleep-dog" alt="Sleeping Dog">
+            <p>Sleeping... 💤</p>
+        </div>
+
+
+          
+         
+        <div id="diningRoom" class="screen dining-room">
+            <img src="images/DiningRoom.png" class="bg">
+            <img src="images/meat.png" id="bowl" ondblclick="feedDog()" alt="Food Bowl">
+            <button class="back-btn" onclick="goLiving()">⬅ Back</button>
+
+        </div>
+          
+
+
+        <script src="script.js">
+
+        </script>
+
+    <div class="status-bar global-ui">
+        <div class="stat">❤️ Attention: <span id="attStat">1</span></div>
+        <div class="stat">🍖 Fullness: <span id="hunStat">1</span></div>
+        <div class="stat">⚡ Energy: <span id="eneStat">1</span></div>
+    </div>
+
+    <div id="notification" class="notification"></div>
+
+    </body>
+</html>
+
+
