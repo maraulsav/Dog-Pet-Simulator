@@ -10,3 +10,5 @@ You can see the current state of the dog from the top right corner.
 
 It is a fun lil project in the holiday, I think.
 
+Here's the link to play this project:
+https://maraulsav.github.io/Dog-Pet-Simulator/
