@@ -10,16 +10,12 @@ let dog = {
 };
 
 
-
-// Screen control
 function showScreen(screenId) {
     document.querySelectorAll(".screen").forEach(screen => {
-      screen.classList.remove("active");
-    });
+      screen.classList.remove("active"); });
     document.getElementById(screenId).classList.add("active");
   }
 
-// Elements
 const nameInput = document.getElementById("dogNameInput");
 const startBtn = document.getElementById("startBtn");
 const loadingText = document.getElementById("loadingText");
@@ -29,22 +25,17 @@ nameInput.addEventListener("input", () => {
     startBtn.disabled = nameInput.value.trim() === "";
 });
 
-// Start game
 startBtn.addEventListener("click", startGame);
-
 function startGame() {
     dog.name = nameInput.value.trim();
     if (!dog.name) return;
-
     showScreen("loading-screen");
     startLoading();
 }
 
-// Loading logic
 function startLoading() {
     let progress = 0;
     let tipIndex = 0;
-
     const tips = [
         `The bar on the top right shows ${dog.name}'s condition 🐾`,
         `Feed ${dog.name} to keep them happy 🍖`,
@@ -53,10 +44,8 @@ function startLoading() {
         `Give lots of love so ${dog.name} feels safe around you 💖`
     ];
     
-
     loadingText.innerText = tips[0];
     progressBar.style.width = "0%";
-
     const interval = setInterval(() => {
         progress++;
         progressBar.style.width = progress + "%";
@@ -73,8 +62,6 @@ function startLoading() {
     }, 30);
 }
 
-
-// Stats
 function clampStats() {
     for (let key in dog) {
         if (typeof dog[key] === "number") {
@@ -91,14 +78,11 @@ function updateStats() {
 }
 
 
-
-// Go home
 function goToHome() {
     showScreen("livingRoom");
     updateStats();
 }
 
-// Go Dining Room
 function goDining() {
     showScreen("diningRoom");
   }
@@ -109,7 +93,7 @@ function goDining() {
 
 
 
-// LOGIC --------------------------------------------
+//--------------------------------LOGIC --------------------------------------------
 
 function feedDog() {
     dog.hunger += 2;    
@@ -120,31 +104,21 @@ function feedDog() {
 
 }
 
-  
-
-
 function sleep() {
-    showMessage("💤 Your dog is sleeping...");
-
+    showMessage("💤 Your dog is sleeping... Don't bother them");
     const dogImg = document.getElementById("dogSprite");
     dogImg.src = "images/dogSlee.png";
-
     setTimeout(() => {
         dog.energy += 3;
         dog.hunger -= 2;
         dog.attention -= 2;
-
         dogImg.src = "images/Dog.png";
         updateStats();
-
         showMessage("✨ " + dog.name + " woke up refreshed!");
     }, 3000);
 }
 
-  
 
-
-// Switching Pages
 function showDining() {
     document.getElementById("livingRoom").classList.add("hidden");
     document.getElementById("diningRoom").classList.remove("hidden");
@@ -155,7 +129,7 @@ function showDining() {
     document.getElementById("livingRoom").classList.remove("hidden");
   }
 
-// Notify player
+
 function showMessage(text) {
     const box = document.getElementById("notification");
     box.textContent = text;
