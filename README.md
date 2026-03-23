@@ -37,3 +37,5 @@ And further after some days later I fix up this project in my hackatime the proj
 I hope that you can understand and tolerate this..
 --I just found out that to make the hackatime not unknown is first make a folder then create a file inside that folder. 
 Not creating the file first the save it up like what I initially done
+
+I still hoping that you would accept the 7 hours hackatime timer QvQ 
